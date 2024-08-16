@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1038743814348",
+    "project_id": "githubloginexample",
+    "storage_bucket": "githubloginexample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038743814348:android:044d34c717e1ae6108c269",
+        "android_client_info": {
+          "package_name": "com.example.login_github_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZs-c8WESCW6viSUiJiRIeSIvfJfzssGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
