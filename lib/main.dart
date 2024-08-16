@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Login By Github Example'),
     );
   }
 }
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title,style: TextStyle(color: Colors.white),),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -112,21 +113,26 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          color: Theme.of(context).colorScheme.inversePrimary,
+        width: double.infinity,
+
+          child: MaterialButton(onPressed: (){
+            signInWithGithub();
+          },child: Text("Login By Github",style: TextStyle(
+            color: Colors.white
+          ),),),
+        ),
+      )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+  Future<UserCredential>signInWithGithub()async{
+    GithubAuthProvider githubAuthProvider=GithubAuthProvider();
+    return await  FirebaseAuth.instance.signInWithProvider(githubAuthProvider);
   }
 }
